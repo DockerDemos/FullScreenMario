@@ -20,7 +20,7 @@ To build the image, change directories into the root of this repository, and run
 
 Once it finishes building, you can run the container with:
 
-`docker run -i -t -d -p 8080:80 FullScreenMario"`
+`docker run -i -t -d -p 8080:80 FullScreenMario`
 
 Then, open your browser and navigate to [http://localhost:8080](http://localhost:8080) to start playing.
 
