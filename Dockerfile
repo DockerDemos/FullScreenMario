@@ -1,6 +1,8 @@
-# Dockerfile for Duke Webservices Drupal install
-# 2014-04-11
+# Docker container for FullScreenMario server
+# http://www.fullscreenmario.com
 #
+# Build from lastest tag source code
+
 
 FROM centos
 MAINTAINER Chris Collins <collins.christopher@gmail.com>
