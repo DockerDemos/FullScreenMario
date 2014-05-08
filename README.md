@@ -22,7 +22,7 @@ Once it finishes building, you can run the container with:
 
 `docker run -i -t -d -p 8080:80 FullScreenMario"`
 
-Then, open your browser and navigate to (http://localhost:8080) to start playing.
+Then, open your browser and navigate to [http://localhost:8080](http://localhost:8080) to start playing.
 
 ##Acknowledgements##
 
