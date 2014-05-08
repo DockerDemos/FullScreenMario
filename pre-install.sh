@@ -1,5 +1,7 @@
 #!/bin/bash
 
+/usr/bin/yum clean all
+/usr/bin/yum update -q -y --nogpgcheck
 /usr/bin/yum install -y --nogpgcheck httpd php git which \
 rpm-build rpmdevtools redhat-rpm-config make gcc glibc-static
 
