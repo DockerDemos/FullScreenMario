@@ -10,6 +10,28 @@ Maintainer: Chris Collins \<collins.christopher@gmail.com\>
 
 Updated: 2014-05-08
 
+##Building and Running##
+
+This is a [Docker](http://docker.io) container image.  You need to have Docker installed to build and run the container.
+
+To build the image, change directories into the root of this repository, and run:
+
+`docker build -t FullScreenMario .`  <-- note the period on the end
+
+Once it finishes building, you can run the container with:
+
+`docker run -i -t -d -p 8080:80 FullScreenMario"`
+
+Then, open your browser and navigate to (http://localhost:8080) to start playing.
+
+##Acknowledgements##
+
+Thanks to:
+
+* Josh Goldberg [https://github.com/Diogenesthecynic](https://github.com/Diogenesthecynic) for his FullScreenMario code on Github.
+
+* Ian Meyer [https://github.com/imeyer](https://github.com/imeyer) for his Runit rpm spec file and build script for RHEL-based systems.
+
 ##Copyright Information##
 
 Full Scree Mario is licensed under the Creative Commons [Attribution Non-Commercial Share-Alike license](http://creativecommons.org/licenses/by-nc-sa/3.0/).  
