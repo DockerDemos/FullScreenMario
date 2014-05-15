@@ -16,11 +16,11 @@ This is a [Docker](http://docker.io) container image.  You need to have Docker i
 
 To build the image, change directories into the root of this repository, and run:
 
-`docker build -t FullScreenMario .`  <-- note the period on the end
+`docker build -t fsm .`  <-- note the period on the end
 
 Once it finishes building, you can run the container with:
 
-`docker run -i -t -d -p 8080:80 FullScreenMario`
+`docker run -i -t -d -p 8080:80 fsm`
 
 Then, open your browser and navigate to [http://localhost:8080](http://localhost:8080) to start playing.
 
