@@ -1,7 +1,7 @@
 #!/bin/bash
 
 /usr/bin/yum clean all
-/usr/bin/yum install -y --nogpgcheck httpd php git which \
+/usr/bin/yum install -y --nogpgcheck httpd php git which tar \
 rpm-build rpmdevtools redhat-rpm-config make gcc glibc-static
 
 # Build the Runit RPM
