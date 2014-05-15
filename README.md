@@ -26,6 +26,18 @@ Then, open your browser and navigate to [http://localhost:8080](http://localhost
 
 To improve startup speed, this image will not update with the latest version of the FullScreenMario software automatically once the initial image is built.  When a new update is released, run the `docker build` command from above to get the newest version.
 
+##Extra steps for Mac OS X##
+
+Docker needs a bit of help to run on a Mac, and most folks appear to be using ["boot2docker"](http://boot2docker.io/) to accomplish it.  If you use boot2docker, there are a few preliminary steps you'll need to take for the networking stuff to work:
+
+`boot2docker init`
+`f_s_m_port=8801`
+`VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port${f_s_m_port},tcp,,${f_s_m_port},,${f_s_m_port}"`
+`VBoxManage modifyvm "boot2docker-vm" --natpf1 "udp-port${f_s_m_port},udp,,${f_s_m_port},,${f_s_m_port}"`
+`boot2docker up`
+
+...and then continue with the `docker build` and `docker run` commands from above.
+
 ##Acknowledgements##
 
 Thanks to:
@@ -33,6 +45,8 @@ Thanks to:
 * Josh Goldberg [https://github.com/Diogenesthecynic](https://github.com/Diogenesthecynic) for his FullScreenMario code on Github.
 
 * Ian Meyer [https://github.com/imeyer](https://github.com/imeyer) for his Runit rpm spec file and build script for RHEL-based systems.
+
+* Darin London, for troubleshooting issues with Docker v0.11 and adding the info for boot2docker.
 
 ##Copyright Information##
 
