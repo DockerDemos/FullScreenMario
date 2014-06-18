@@ -4,21 +4,32 @@
 /usr/bin/yum install -y --nogpgcheck httpd php git which tar \
 rpm-build rpmdevtools redhat-rpm-config make gcc glibc-static
 
-# Build the Runit RPM
-RPMUSER="rpmbuilder"
+# Build the RPM
+RPMUSER='rpmbuilder'
 RPMHOME="/home/$RPMUSER"
 ARCH="$(arch)"
 
 /usr/sbin/useradd $RPMUSER
 
 /bin/mkdir -p $RPMHOME/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-/bin/chown -R $RPMUSER $RPMHOME 
-/bin/echo '%_topdir %(echo $HOME)/rpmbuild' > $RPMHOME/.rpmmacros 
+/bin/echo '%_topdir %(echo $HOME)/rpmbuild' > $RPMHOME/.rpmmacros
+/bin/chown -R $RPMUSER $RPMHOME
 
-/bin/su -c '/usr/bin/git clone https://github.com/imeyer/runit-rpm.git' - rpmbuilder
-/bin/su -c '/home/rpmbuilder/runit-rpm/build.sh' - rpmbuilder
+f_build() {
+	RPMSOURCE="$1"
+	RPM="$2"
+	/bin/su -c "/usr/bin/git clone $RPMSOURCE $RPM" - rpmbuilder
+	/bin/su -c "/home/rpmbuilder/$RPM/build.sh $RPM 1>/dev/null" - rpmbuilder
+}
 
-/usr/bin/yum install -y /home/rpmbuilder/rpmbuild/RPMS/$ARCH/runit-2.1.1-6.el6.$ARCH.rpm
+BUILDPKGS='rpm-build rpmdevtools redhat-rpm-config make gcc glibc-static'
+
+/usr/bin/yum clean all
+/usr/bin/yum install -y $BUILDPKGS httpd php git which tar
+
+f_build 'https://github.com/imeyer/runit-rpm.git' 'runit-rpm'
+
+/usr/bin/yum install -y $RPMHOME/rpmbuild/RPMS/*/*.rpm
 
 # Setup the Apache init
 /bin/mkdir -p /etc/service/httpd
