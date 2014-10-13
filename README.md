@@ -8,7 +8,7 @@ Docker container for running a Full Screen Mario server
 
 Maintainer: Chris Collins \<collins.christopher@gmail.com\>
 
-Updated: 2014-05-08
+Updated: 2014-10-13
 
 ##Building and Running##
 
@@ -20,7 +20,7 @@ To build the image, change directories into the root of this repository, and run
 
 Once it finishes building, you can run the container with:
 
-`docker run -i -t -d -p 8080:80 fsm`
+`docker run -d -p 8080:80 fsm`
 
 Then, open your browser and navigate to [http://localhost:8080](http://localhost:8080) to start playing.
 
@@ -43,8 +43,6 @@ Docker needs a bit of help to run on a Mac, and most folks appear to be using ["
 Thanks to:
 
 * Josh Goldberg [https://github.com/Diogenesthecynic](https://github.com/Diogenesthecynic) for his FullScreenMario code on Github.
-
-* Ian Meyer [https://github.com/imeyer](https://github.com/imeyer) for his Runit rpm spec file and build script for RHEL-based systems.
 
 * Darin London, for troubleshooting issues with Docker v0.11 and adding the info for boot2docker.
 
