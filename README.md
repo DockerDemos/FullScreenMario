@@ -3,16 +3,15 @@ FullScreenMario
 
 Docker container for running a Full Screen Mario server
 
-* [FullScreenMario](http://www.fullscreenmario.com/)
-* [FullScreenMario Github Repo](https://github.com/Diogenesthecynic/FullScreenMario)
+* [FullScreenMario Github Repo](https://github.com/FullScreenShenanigans/FullScreenMario/)
 
 Maintainer: Chris Collins \<collins.christopher@gmail.com\>
 
-Updated: 2014-10-13
+Updated: 2015-11-30
 
 ##Building and Running##
 
-This is a [Docker](http://docker.io) container image.  You need to have Docker installed to build and run the container.
+This is a [Docker](http://docker.com) container image.  You need to have Docker installed to build and run the container.
 
 To build the image, change directories into the root of this repository, and run:
 
@@ -20,7 +19,7 @@ To build the image, change directories into the root of this repository, and run
 
 Once it finishes building, you can run the container with:
 
-`docker run -d -p 8080:80 fsm`
+`docker run -d -p 80:80 fsm`
 
 Then, open your browser and navigate to [http://localhost:8080](http://localhost:8080) to start playing.
 
@@ -48,11 +47,11 @@ Thanks to:
 
 ##Copyright Information##
 
-Full Scree Mario is licensed under the Creative Commons [Attribution Non-Commercial Share-Alike license](http://creativecommons.org/licenses/by-nc-sa/3.0/).  
+Full Scree Mario is licensed under the [MIT License](http://mit-license.org/).
 
 DockerDemos/FullScreenMario docker container files are licensed as follows:
 
-Copyright (C) 2014 Chris Collins
+Copyright (C) 2015 Chris Collins
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 

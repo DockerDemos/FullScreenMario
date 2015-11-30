@@ -5,11 +5,11 @@
 FROM centos:centos6
 MAINTAINER Chris Collins <collins.christopher@gmail.com>
 
-ENV FSM https://github.com/Diogenesthecynic/FullScreenMario.git
+ENV FSM https://github.com/FullScreenShenanigans/FullScreenMario.git
 
-RUN yum install -y httpd php git && yum clean all
-RUN git clone $FSM /var/www/html
-RUN chmod 755 /var/www/html
+RUN yum install -y httpd git && yum clean all
+RUN git clone $FSM /var/www/fsm
+RUN rmdir /var/www/html && ln -s /var/www/fsm/Source/ /var/www/html
 
 EXPOSE 80 
 
