@@ -3,11 +3,9 @@ FullScreenMario
 
 Docker container for running a Full Screen Mario server
 
-* [FullScreenMario Github Repo](https://github.com/FullScreenShenanigans/FullScreenMario/)
-
 Maintainer: Chris Collins \<collins.christopher@gmail.com\>
 
-Updated: 2015-11-30
+Updated: 2016-09-20
 
 ##Building and Running##
 
@@ -46,8 +44,6 @@ Thanks to:
 * Darin London, for troubleshooting issues with Docker v0.11 and adding the info for boot2docker.
 
 ##Copyright Information##
-
-Full Scree Mario is licensed under the [MIT License](http://mit-license.org/).
 
 DockerDemos/FullScreenMario docker container files are licensed as follows:
 
