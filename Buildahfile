@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# There's no such thing as a Buildafile - this is just a bash script
+# Use whatever too you want
+
+set -o errexit
+
+FSM="https://github.com/dignifiedquire/FullScreenMario.git"
+
+# Create a container
+container=$(buildah from scratch)
+mountpoint=$(buildah mount $container)
+
+buildah config --label maintainer="Chris Collins <collins.christopher@gmail.com>" $container
+
+dnf install --installroot $mountpoint \
+            --releasever 26 glibc-minimal-langpack nginx \
+            --setopt install_weak_deps=false -y
+
+rm -rf ${mountpoint}/var/cache/
+
+# Clone the FSM software
+mkdir -p ${mountpoint}/var/www/fsm \
+  && git clone --depth=1 $FSM ${mountpoint}/var/www/fsm
+
+# Change the document root to the FSM clone
+sed -i 's|/usr/share/nginx/html|/var/www/fsm|' ${mountpoint}/etc/nginx/nginx.conf
+
+# Change the output of nginx to the console
+sed -i 's|/var/log/nginx/error.log|/dev/stderr|' ${mountpoint}/etc/nginx/nginx.conf
+sed -i 's|/var/log/nginx/access.log|/dev/stdout|' ${mountpoint}/etc/nginx/nginx.conf
+
+# Run nginx in the foreground
+echo "daemon off;" >> ${mountpoint}/etc/nginx/nginx.conf
+
+buildah unmount $container
+buildah commit -f docker $container fsm:latest
+buildah push fsm:latest docker-daemon:fsm:latest
