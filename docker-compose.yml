@@ -1,0 +1,9 @@
+version: '2'
+services:
+  fsm:
+    build:
+      context: .
+      # context: https://github.com/DockerDemos/FullScreenMario.git
+    image: fsm
+    ports:
+      - 0.0.0.0:80:80
