@@ -7,6 +7,8 @@ Maintainer: Chris Collins \<collins.christopher@gmail.com\>
 
 Updated: 2017-11-17
 
+[![Master Build Status](https://travis-ci.org/DockerDemos/FullScreenMario.svg?branch=master)](https://travis-ci.org/DockerDemos/FullScreenMario.svg?branch=master)
+
 ## Building and Running
 
 This is a [Docker](http://docker.com) container image.  You need to have Docker installed to build and run the container.
