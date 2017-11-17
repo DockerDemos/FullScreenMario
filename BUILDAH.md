@@ -7,4 +7,4 @@ Buildah is extremely flexible and lets you use a variety of tools for building i
 
 A caveat - this Buildahfile is designed for use with Fedora 26.  If you have another Linux distro, you'll need to adjust it accordingly (probably mostly by replacing `dnf` with your distro's package management software).
 
-* Buildahfiles aren't a thing - I just named it that for convenience.
+\* Buildahfiles aren't a thing - I just named it that for convenience.
