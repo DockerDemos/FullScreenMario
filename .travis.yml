@@ -9,6 +9,7 @@ script:
   - "docker-compose build"
   - "docker-compose run --rm --entrypoint nginx fsm -v"
   - "docker-compose run --rm --entrypoint ls fsm /var/www/fsm"
+  - "docker-compose up -d && curl --fail http://localhost"
 
 notifications:
   email:
