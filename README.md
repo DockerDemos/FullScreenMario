@@ -5,45 +5,48 @@ Docker container for running a Full Screen Mario server
 
 Maintainer: Chris Collins \<collins.christopher@gmail.com\>
 
-Updated: 2016-09-20
+Updated: 2017-11-17
 
-##Building and Running##
+## Building and Running
 
 This is a [Docker](http://docker.com) container image.  You need to have Docker installed to build and run the container.
 
-To build the image, change directories into the root of this repository, and run:
+### Using Docker Compose
 
-`docker build -t fsm .`  <-- note the period on the end
+If you have [Docker Compose](https://docs.docker.com/compose/) installed, building and running the image is as simple as changing directories into the root of your git clone of this repository and running:
+
+```
+# Build the image
+docker-compose build
+
+# Run the container
+docker-compose up
+```
+
+### Without Docker Compose
+
+To build the image, change directories into the root of your git clone this repository, and run:
+
+`docker build -t fsm .`
+
+Note the period on the end of the line above.
 
 Once it finishes building, you can run the container with:
 
-`docker run -d -p 80:80 fsm`
+`docker run -t -p 80:80 fsm`
 
-Then, open your browser and navigate to [http://localhost:8080](http://localhost:8080) to start playing.
+Then, open your browser and navigate to [http://localhost:80](http://localhost:80) to start playing.
 
-To improve startup speed, this image will not update with the latest version of the FullScreenMario software automatically once the initial image is built.  When a new update is released, run the `docker build` command from above to get the newest version.
 
-##Extra steps for Mac OS X##
-
-Docker needs a bit of help to run on a Mac, and most folks appear to be using ["boot2docker"](http://boot2docker.io/) to accomplish it.  If you use boot2docker, there are a few preliminary steps you'll need to take for the networking stuff to work:
-
-    boot2docker init
-    f_s_m_port=8801
-    VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port${f_s_m_port},tcp,,${f_s_m_port},,${f_s_m_port}"
-    VBoxManage modifyvm "boot2docker-vm" --natpf1 "udp-port${f_s_m_port},udp,,${f_s_m_port},,${f_s_m_port}"
-    boot2docker up
-
-...and then continue with the `docker build` and `docker run` commands from above.
-
-##Acknowledgements##
+## Acknowledgements
 
 Thanks to:
 
-* Josh Goldberg [https://github.com/Diogenesthecynic](https://github.com/Diogenesthecynic) for his FullScreenMario code on Github.
+* Josh Goldberg [https://github.com/Diogenesthecynic](https://github.com/Diogenesthecynic/) for his FullScreenMario code on Github.
 
 * Darin London, for troubleshooting issues with Docker v0.11 and adding the info for boot2docker.
 
-##Copyright Information##
+## Copyright Information
 
 DockerDemos/FullScreenMario docker container files are licensed as follows:
 
