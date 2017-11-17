@@ -1,18 +1,20 @@
 # Docker container for FullScreenMario server
 # http://www.fullscreenmario.com
+FROM centos:latest
+LABEL maintainer Chris Collins <collins.christopher@gmail.com>
 
-
-FROM centos:centos6
-MAINTAINER Chris Collins <collins.christopher@gmail.com>
-
-# https://github.com/FullScreenShenanigans/FullScreenMario.git removed - DMCA
 ENV FSM https://github.com/dignifiedquire/FullScreenMario.git
 
-RUN yum install -y httpd git && yum clean all
-RUN git clone $FSM /var/www/fsm
-RUN rmdir /var/www/html && ln -s /var/www/fsm /var/www/html
+RUN yum install -y epel-release \
+      && yum install -y nginx git \
+      && yum clean all \
+      && rm -rf /var/cache/yum
+
+RUN git clone --depth=1 $FSM /var/www/fsm
+
+RUN sed -i 's|/usr/share/nginx/html|/var/www/fsm|' /etc/nginx/nginx.conf
 
 EXPOSE 80
 
-ENTRYPOINT [ "/usr/sbin/httpd", "-DFOREGROUND" ]
+ENTRYPOINT [ "nginx" ]
 
