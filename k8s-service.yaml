@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: supermario-service
+  labels:
+    app: supermario-service
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: supermario
+  sessionAffinity: None

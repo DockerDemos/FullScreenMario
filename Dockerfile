@@ -7,6 +7,11 @@ ENV FSM https://github.com/dignifiedquire/FullScreenMario.git
 
 HEALTHCHECK CMD curl --fail http://localhost/
 
+
+RUN cd /etc/yum.repos.d/
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+Run yum -y update
 RUN yum install -y epel-release \
       && yum install -y nginx git \
       && yum clean all \
